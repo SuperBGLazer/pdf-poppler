@@ -1,15 +1,23 @@
 # pdf-poppler
 
 Convert PDF files into images using Poppler with promises. It achieves 10x faster performance compared to other PDF converters.
-Poppler library attached inside statically, so it has not require installation of poppler.
-
-**Note: Currently it supports for Windows and Mac OS only.**
+Poppler library attached inside statically for Windows and macOS, so it does not require installation of poppler.
 
 ## Installation
 ```
   $ npm install pdf-poppler
 ```
 
+### Linux dependency
+Debian:
+```
+  # apt-get install poppler-utils
+```
+
+Alpine:
+```
+  # apk add poppler-utils
+```
 ## Usage
 
 ### Get pdf info

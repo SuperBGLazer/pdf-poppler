@@ -3,7 +3,7 @@ const path = require('path');
 const {spawn} = require('child_process');
 
 let platform = os.platform();
-if (!['darwin', 'win32'].includes(platform)) {
+if (!['darwin', 'win32', 'linux'].includes(platform)) {
     console.error(`${platform} is NOT supported.`);
     process.exit(1);
 }
@@ -63,6 +63,8 @@ else if (platform === 'darwin') {
     spawn('install_name_tool', ['-change', `/usr/local/Cellar/poppler/0.66.0/lib/libpoppler.77.dylib`, `${path.join(dyldPath, 'libpoppler.77.0.0.dylib')}`, `${path.join(popplerPath, 'pdfinfo')}`]);
     spawn('install_name_tool', ['-change', `/usr/local/Cellar/poppler/0.66.0/lib/libpoppler.77.dylib`, `${path.join(dyldPath, 'libpoppler.77.0.0.dylib')}`, `${path.join(popplerPath, 'pdftocairo')}`]);
     spawn('install_name_tool', ['-change', `/usr/local/Cellar/poppler/0.66.0/lib/libpoppler.77.dylib`, `${path.join(dyldPath, 'libpoppler.77.0.0.dylib')}`, `${path.join(popplerPath, 'pdfimages')}`]);
+} else if (platform === 'linux') {
+    popplerPath = '/usr/bin'
 }
 else {
     console.error(`${platform} is NOT supported.`);
